@@ -17,20 +17,14 @@ const userSchema = new mongoose.Schema(
       required: [true, "Profession is required"],
     },
 
-    language: {
-      type: String,
-      required: [true, "Language is required"],
-    },
-
     experience: {
       type: Number,
       required: [true, "Experience is required"],
-      default: 0,
     },
 
     email: {
       type: String,
-      required: [true, "Language is required"],
+      required: [true, "Email is required"],
       unique: true,
       index: true,
     },

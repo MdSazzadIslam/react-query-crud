@@ -12,10 +12,8 @@ const Header = () => {
         </Link>
       </div>
       <div className="nav_menu">
-        <Link to="/tech">Skills</Link>
-        <Link to="/project">Projects</Link>
-
-        <Link to="/contact">Contact</Link>
+        <Link to="/">List</Link>
+        <Link to="/user">Add</Link>
       </div>
     </div>
   );

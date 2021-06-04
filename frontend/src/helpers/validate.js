@@ -24,12 +24,6 @@ const validate = (inputs) => {
   ) {
     errors.country = "Country is required!!!";
   }
-  if (inputs.country && inputs.country !== undefined) {
-    let regx = /^[a-zA-Z-,]+(\s{0,1}[a-zA-Z-, ])*$/.test(inputs.country);
-    if (regx === false) {
-      errors.name = "Only character are allowed in country";
-    }
-  }
 
   if (
     !inputs.experience ||
@@ -39,9 +33,9 @@ const validate = (inputs) => {
   }
 
   if (inputs.experience && inputs.experience !== undefined) {
-    let regx = /[-]{0,1}[\d]*[.]{0,1}[\d]+/g.test(inputs.experience);
+    let regx = /^-?(\d+\.?\d*)$|(\d*\.?\d+)$/.test(inputs.experience);
     if (regx === false) {
-      errors.name = "Only character are allowed in country";
+      errors.name = "Only number are allowed in experience";
     }
   }
 

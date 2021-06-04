@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import User from "./views/User";
+import UserList from "./views/UserList";
+
 import "./App.css";
 function App() {
   return (
@@ -9,7 +11,8 @@ function App() {
       <Header />
 
       <Switch>
-        <Route to="/" exaact render={(props) => <User {...props} />} />
+        <Route path="/" exact render={(props) => <UserList {...props} />} />
+        <Route path="/user" exact render={(props) => <User {...props} />} />
       </Switch>
 
       <Footer />

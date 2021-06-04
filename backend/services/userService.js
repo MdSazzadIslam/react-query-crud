@@ -3,7 +3,7 @@ const User = require("../models/userModel");
 
 class userService {
   async getAll(_id) {
-    return await User.find({ user: _id });
+    return await User.find({});
   }
 
   async getById(id) {
@@ -20,6 +20,10 @@ class userService {
 
   async delete(id) {
     return await User.findByIdAndDelete({ _id: id });
+  }
+
+  async isEmailExists(email) {
+    return await User.find({ email: email });
   }
 }
 module.exports = new userService();

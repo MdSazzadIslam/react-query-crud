@@ -21,14 +21,14 @@ exports.getById = async (req, res, next) => {
 
 exports.create = async (req, res, next) => {
   try {
-    /*     const data = {
-      name: req.body.name,
-      country: req.body.country,
-      language: req.body.language,
-      experience: req.body.experience,
-    }; */
-
+    const chkEmailExists = userService.isEmailExists(req.body.email);
+    if (chkEmailExists) {
+      return res
+        .status(201)
+        .send({ success: false, msg: "Email already exists!!!" });
+    }
     const result = await userService.create(req.body);
+
     if (result) {
       res.status(201).send({ success: true, msg: "Successfull" });
     } else {
