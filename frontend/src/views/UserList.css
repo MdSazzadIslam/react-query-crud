@@ -9,7 +9,7 @@
   position: relative;
   margin-top: 20px;
 }
-.btn {
+.button_btn {
   border-radius: 50%;
   border: none;
   transition-duration: 0.5s;
@@ -17,8 +17,12 @@
   box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.3);
 }
 
-.btn:hover {
+.button_btn:hover {
   cursor: pointer;
   color: black;
   background-color: red;
+}
+.table_user {
+  border-collapse: separate;
+  border-spacing: 0.25em 1em;
 }

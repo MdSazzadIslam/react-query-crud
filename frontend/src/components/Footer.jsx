@@ -8,11 +8,11 @@ const Footer = () => {
         Copyright &copy; {new Date().getFullYear()} Md. Sazzadul Islam. All
         Rights Reserved.
         <a
-          href="https://github.com/MdSazzadIslam"
+          href="https://sazzad-islam-88.vercel.app/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          GitHub
+          Profile
         </a>
       </h4>
     </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const ListRow = ({ users, deleteHandler }) => {
+const ListRow = ({ users, deleteHandler, disabled }) => {
   const userData = users.map((user) => {
     return (
       <tr key={user._id}>
@@ -12,20 +12,22 @@ const ListRow = ({ users, deleteHandler }) => {
         <td>
           <input
             type="button"
-            className="btn"
+            className="button_btn"
             value="Delete"
             onClick={(e) => deleteHandler(user._id)}
+            disabled={disabled}
           />
           <Link
-            className="btn"
+            className="button_btn"
             to={{
               pathname: "/user",
-              query: {
-                id: user._id,
+              state: {
+                _id: user._id,
                 name: user.name,
                 country: user.country,
                 profession: user.profession,
                 email: user.email,
+                experience: user.experience,
               },
             }}
           >
@@ -36,7 +38,7 @@ const ListRow = ({ users, deleteHandler }) => {
     );
   });
 
-  return <>{userData}</>;
+  return <> {userData}</>;
 };
 
 export default ListRow;

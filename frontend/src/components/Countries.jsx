@@ -1,6 +1,6 @@
 import React from "react";
 
-const Countries = ({ countries, onChange, placeholder, className }) => {
+const Countries = ({ countries, onChange, placeholder, className, value }) => {
   const handleChange = (e) => {
     debugger;
     onChange(e.target.value);
@@ -12,6 +12,7 @@ const Countries = ({ countries, onChange, placeholder, className }) => {
       onChange={handleChange}
       placeholder={placeholder}
       className={className}
+      value={value}
     >
       {countries.map((country, index) => (
         <option key={index}>{country.name}</option>

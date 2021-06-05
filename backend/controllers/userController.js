@@ -3,8 +3,8 @@ const userService = require("../services/userService");
 
 exports.getAll = async (req, res, next) => {
   try {
-    const products = await userService.getAll(req.userId);
-    res.json(products);
+    const result = await userService.getAll(req.userId);
+    res.json(result);
   } catch (error) {
     return res.status(500).send({ success: false, msg: error.message });
   }
@@ -12,8 +12,8 @@ exports.getAll = async (req, res, next) => {
 
 exports.getById = async (req, res, next) => {
   try {
-    const products = await userService.getById(req.params.id);
-    res.json(products);
+    const result = await userService.getById(req.params.id);
+    res.json(result);
   } catch (error) {
     return res.status(500).send({ success: false, msg: error.message });
   }
@@ -21,8 +21,9 @@ exports.getById = async (req, res, next) => {
 
 exports.create = async (req, res, next) => {
   try {
-    const chkEmailExists = userService.isEmailExists(req.body.email);
-    if (chkEmailExists) {
+    const chkEmailExists = await userService.isEmailExists(req.body.email);
+
+    if (chkEmailExists.length > 0) {
       return res
         .status(201)
         .send({ success: false, msg: "Email already exists!!!" });
@@ -44,12 +45,8 @@ exports.create = async (req, res, next) => {
 exports.update = async (req, res, next) => {
   try {
     const isExists = await userService.getById(req.params.id);
-    if (isExists) {
-      /*   isExists.product = req.body.product;
-      isExists.price = req.body.price;
-      isExists.quantity = req.body.quantity;
-      isExists.user = req.body.user; */
 
+    if (isExists) {
       const result = await userService.update(req.params.id, req.body);
 
       if (result) {
